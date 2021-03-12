@@ -1,39 +1,34 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../components/SearchBar";
-import DataSearchResult from "../components/DataSearchResult";
+import DataList from "../components/DataList";
 import API from "../utils/API";
 import Wrapper from "../components/Wrapper";
 import Header from "../components/Header";
+
 
 
 const Home = () => {
     const [dataSearch, setDataSearch] = useState({
         users: [],
         order: "descend",
-        filteredUsers: [],
-        headings: [
-            {name: "Image"},
-            {name: "Name"},
-            {name: 'Phone'},
-            {name: 'Email'},
-            {name: "DOB"}
-        ]
+        filteredUsers: []
     });
 
     const handleSearchChange = event => {
-        const {value} = event.target;
+        const { value } = event.target;
         const filteredList = dataSearch.users.filter(item => {
-            let person = item.name.first.toLowerCase().includes(value.toLowerCase()) ;
+            let person = item.name.first.toLowerCase().includes(value.toLowerCase());
 
             return person;
         })
 
-        setDataSearch({...dataSearch, filteredUsers: filteredList});
-       
+        setDataSearch({ ...dataSearch, filteredUsers: filteredList });
+
     }
 
+
     useEffect(() => {
-        
+
         API.getUsers().then(res => {
             console.log(res.data.results);
             setDataSearch({
@@ -45,12 +40,14 @@ const Home = () => {
 
     }, []);
 
-    return(
-         
+    return (
+
         <Wrapper>
             <Header />
-           <SearchBar handleInputChange={handleSearchChange} />
-           <DataSearchResult filteredUsers={dataSearch.filteredUsers}/>
+            <SearchBar handleInputChange={handleSearchChange} />
+            <DataList filteredUsers={dataSearch.filteredUsers} />
+
+
         </Wrapper>
 
     )
