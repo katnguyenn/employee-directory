@@ -22,7 +22,7 @@ const DataHeader = (props) => {
                             className="header-col"
                             key={name}
                             onClick={() => {
-                                props.setSortCol(name)
+                                props.handleSort()
                             }}
 
                         >
