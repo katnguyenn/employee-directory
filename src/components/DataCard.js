@@ -1,11 +1,11 @@
 import React from "react";
-import Table from 'react-bootstrap/Table';
-import "../styles/DataCard.css";
+import "../styles/DataCard.css"
 
 
-const DataCard = ({ login, image, name, phone, email, dob }) => {
+
+const DataCard = ({handleSort, login, image, name, phone, email, dob }) => {
     return (
-        <Table >
+        
             <tbody>
 
                 <tr key={login}>
@@ -18,7 +18,7 @@ const DataCard = ({ login, image, name, phone, email, dob }) => {
                         />
 
                     </td>
-                    <td data-th="Name">
+                    <td data-th="Name" className="name" onClick={handleSort}>
                         {name}
 
                     </td>
@@ -28,12 +28,12 @@ const DataCard = ({ login, image, name, phone, email, dob }) => {
                     <td data-th="Email">
                         {email}
                     </td>
-                    <td data-th="DOB">
+                    <td data-th="DOB" className="dob">
                         {dob}
                     </td>
                 </tr>
             </tbody>
-        </Table>
+        
 
 
 
