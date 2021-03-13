@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DataCard from "./DataCard";
 import DataHeader from "./DataHeader";
 import "../styles/DataList.css";
