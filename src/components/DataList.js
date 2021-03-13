@@ -14,32 +14,15 @@ function formatDate(date) {
     return formattedDate;
 }
 
-function DataList({ filteredUsers }) {
-    const [sortCol, setSortCol] = useState()
-    console.log(filteredUsers)
-    const sortedUsers = filteredUsers.sort((a, b) => {
-
-        if (sortCol === "name") {
-            return a.name.last > b.name.last ? 1 : -1
-        } else if (sortCol === "dob") {
-            return a.dob.date > b.dob.date ? 1 : -1
-        }
-
-    })
-    console.log(sortCol)
-
-    // useEffect(() => {
-    //     if(!sortCol) {
-    //         return;
-    //     }
-
-    // },[])
+function DataList({ filteredUsers, handleSort }) {
+   
+   
 
     return (
         <table>
-            <DataHeader setSortCol={setSortCol} />
+            <DataHeader handleSort={handleSort} />
 
-            {sortedUsers.map(person => (
+            {filteredUsers.map(person => (
 
                 <DataCard
                     key={person.login.uuid}
