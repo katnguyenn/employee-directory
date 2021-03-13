@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/DataHeader.css"
 
 
 
@@ -19,11 +20,13 @@ const DataHeader = (props) => {
                 {headings.map(({ name }) => {
                     return (
                         <th
-                            className="header-col"
+                            className={`header-col ${name === "Name" ? `pointer` : ``}`}
                             key={name}
-                            onClick={() => {
+                            onClick={() => 
+                                name === "Name" ? 
                                 props.handleSort()
-                            }}
+                                : null
+                            }
 
                         >
                             {name}
